@@ -12,7 +12,7 @@ public class Skill {
 	 */
 
 	//lev_skillList로부터 호출, 스킬을 스킬 스트럭쳐에 기록함
-	public void learnSkill(int trigger, skillStructure[] s) {
+	public void learnSkill(int trigger, SkillStructure[] s) {
 		switch(trigger) {
 		// trigger를 받아서 트리거에 해당하는 번호 스킬내용을 구조체에 기록
 		case 1:
@@ -121,7 +121,7 @@ public class Skill {
 	}
 	
 	// 비전투시 스킬 인포를 불러오는 창 메인에서 호출
-	public void infoSkill(skillStructure[] s) {
+	public void infoSkill(SkillStructure[] s) {
 		if(s[0].Skill_No==-1) {
 			System.out.println("습득한 스킬이 없습니다.");
 			return;
@@ -170,7 +170,7 @@ public class Skill {
 	}
 	
 	// 전투 시 스킬 사용 선택 시 불러오는 메소드 스킬 정보를 출력해주고 번호를 받아 useSkill로 넘겨준다
-	public void chooseSkill(/*Player p,*/skillStructure[] s) {
+	public void chooseSkill(/*Player p,*/SkillStructure[] s) {
 		int choose=-1;
 		int Skill_Num=-1;
 		int Skill_ChoiceTimes=0;
@@ -197,7 +197,7 @@ public class Skill {
 	}
 	
 	// 스킬 습득 가능 레벨에 메인에서 불러오기 랜덤하게 배울 스킬을 생성해줌
-	public void lev_skillList(skillStructure[] s) {
+	public void lev_skillList(SkillStructure[] s) {
 		int num_skill1= 0;
 		int num_skill2= 0;
 		int num_skill3= 0;
@@ -333,4 +333,4 @@ public class Skill {
 	public void Double_atack(/*Player p,*/int Skill_ChoiceTimes) {
 		
 	}
-}	
+}

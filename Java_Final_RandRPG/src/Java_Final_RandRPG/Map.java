@@ -4,8 +4,8 @@ class Map {
   private char[][] map = new char[5][5];
   private int col, row;
   private int g_col, g_row;
-  private int level;
-  private boolean is_there_m, level_up;
+  public int level;
+  public boolean is_there_m;
   
   public Map(){
     col = 0;
@@ -33,64 +33,57 @@ class Map {
     map[r][c] = 'P';
     displayGoal();
   }
-  public void move(char dir){
-    if(dir == 'h'){
+  public boolean move(char dir){
+    if(dir == 'a'){
       if(col == 0)  col = 4;
       else col--;
     }
-    else if(dir == 'j'){
+    else if(dir == 's'){
       if(row == 4)  row = 0;
       else row++;
     }
-    else if(dir == 'k'){
+    else if(dir == 'w'){
       if(row == 0)  row = 4;
       else row--;
     }
-    else if(dir == 'l'){
+    else if(dir == 'd'){
       if(col == 4)  col = 0;
       else col++;
     }
     location(row, col);
     monster_exists();
+    if(nextLevel()){
+        level++;
+        return true;
+    }
+    return false;
   }
   public void exit(){
     Random rand = new Random();
-    g_row = rand.nextInt(1+5);
-    g_col = rand.nextInt(1+5);
-    level_up = false;
+    g_row = 1+rand.nextInt(4);
+    g_col = rand.nextInt(5);
   }
   public void displayGoal(){
       map[g_row][g_col] = 'G';
   }
-  public void exit(int level){
-    if(!level_up) return;
-    level++;
-    exit();
-  }
+  
   public boolean nextLevel(){
     if(g_col == col && g_row == row){
-      level_up = true;
       col = 0; row = 0;
+      exit();
       location(row, col);
       return true;
     }
     return false;
   }
   public void print_map(){
-    System.out.println("h:left j:down k:up l:right");
+    System.out.println("w:up s:down a:left d:right");
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 5; j++)
         System.out.print("|"+map[i][j]+"|");
       System.out.println();
     }
     System.out.println("Level of Top: "+level);
-    if(is_there_m){
-      System.out.println("몬스터 출몰");
-    }
     System.out.println();
-    if(nextLevel()){
-      exit(level);
-      print_map();
-    }
   }
 }
