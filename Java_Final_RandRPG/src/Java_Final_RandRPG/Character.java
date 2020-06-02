@@ -1,67 +1,98 @@
-import java.util.HashMap; 
+import java.util.*; 
 
+class Player {
+	private Status status;
+	private ArrayList<Item> item_status;
+	private ArrayList<Skill> skill_status;
+	//private int money;
 
-class Character {
-	public int HP,MP,EXP,Level,OP,DP,Money;//Ã¼·Â ¸¶³ª·® °æÇèÄ¡ ·¹º§ °ø°İ·Â ¹æ¾î·Â µ·
-	int MaxHP,MaxMP,MaxEXP;//ÃÖ´ëÃ¼·Â,ÃÖ´ë¸¶³ª·®,·¹º§¾÷µÇ±â À§ÇØ ÇÊ¿äÇÑ °æÇèÄ¡·®
-	HashMap<String,Integer> item= new HashMap<String,Integer>();//¾ÆÀÌÅÛÀÌ¸§°ú ¼ö·®
-	Character(){//ÃÊ±â Ä³¸¯ÅÍ ¼³Á¤°ª
-		MaxHP=50;
-		MaxMP=50;
-		HP=MaxHP;
-		MP=MaxMP;
-		EXP=0;
-		Level=1;
-		OP=4;
-		DP=4;
-		MaxEXP=100;
-		Money=0;
+	Player(){//ì´ˆê¸° ìºë¦­í„° ì„¤ì •ê°’
+		status = new Status(50, 50, 1, 5, 4, 4);
+		item_status = new ArrayList<Item>();
+		skill_status = new ArrayList<Skill>();
+	}
+	Player(int _hp, int _mp, int _level, int _exp, int _ad, int _dp, boolean[] have_items){
+		status = new Status(_hp, _mp, _level, _exp, _ad, _dp);
+		item_status = new ArrayList<Item>();
+		skill_status = new ArrayList<Skill>();
+	}
+	public void addItem(Item item) {
+		item_status.add(item);
+		Status s = item.getStatus();
+		status.pmaxHp += s.pmaxHp;
+		status.pmaxMp += s.pmaxMp;
+		status.pad += s.pad;
+		status.pdp += s.pdp;
+	}
+	public void addSkill(Skill skill) {
+		skill_status.add(skill);
+	}
+	public void Show() {
+		System.out.println("Player information\n");
+		status.Show();
+	}
+	public boolean Attacked(int damage) {
+		if(damage - status.dp - status.pdp <= 0)
+			status.hp -= 1;
+		else
+			status.hp -= damage - status.dp - status.pdp;
+		if (status.hp <= 0) {
+			System.out.println("YOU DIE.");
+			return true;
+		}
+		return false;
+	}
+	public int Damage() {
+		return status.ad + status.pad;
 	}
 	public void PlusHp(int n) {
-		HP+=n;
-		if(HP>MaxHP)
-			HP=MaxHP;
+		status.hp+=n;
+		if(status.hp>status.maxHp+status.pmaxHp)
+			status.hp=status.maxHp+status.pmaxHp;
 	}
 	public void PlusMp(int n) {
-		MP+=n;
-		if(MP>MaxMP)
-			MP=MaxMP;
+		status.mp+=n;
+		if(status.mp>status.maxMp+status.pmaxMp)
+			status.mp=status.maxMp+status.pmaxMp;
 	}
 	public void PlusExp(int n) {
-		EXP+=n;
-		if(EXP>=MaxEXP) {//·¹º§¾÷ÇÒ¶§¸¶´Ù ¿À¸¦°Íµé
-			EXP=EXP%MaxEXP;
-			Level++;
-			MaxEXP+=50;
-			MaxHP+=10;
-			MaxMP+=10;
-			HP=MaxHP;
-			MP=MaxMP;
-			OP+=2;
-			DP+=2;
-			System.out.println("ÃàÇÏÇÕ´Ï´Ù!! Lv."+Level+"ÀÌ µÇ¼Ì½À´Ï´Ù.");
-			this.ShowMyStatus();
+		status.exp+=n;
+		if(status.exp>=status.maxExp) {//ë ˆë²¨ì—…í• ë•Œë§ˆë‹¤ ì˜¤ë¥¼ê²ƒë“¤
+			status.exp=status.exp%status.maxExp;
+			status.level++;
+			status.maxExp+=50;
+			status.maxHp+=10;
+			status.maxMp+=10;
+			status.hp=status.maxHp+status.pmaxHp;
+			status.mp=status.maxMp+status.pmaxMp;
+			status.ad+=2;
+			status.dp+=2;
+			System.out.println("Congratulations!! Lv."+status.level);
+			this.status.Show();
 		}
 	}
-	public void ShowMyStatus() {
-		System.out.println("==========================ÄÉ¸¯ÅÍ Á¤º¸ ==========================");
-        System.out.println("·¹º§: " + Level);
-        System.out.println("hp: " + HP+ "/" + MaxHP);
-        System.out.println("mp: " + MP + "/" + MaxMP);
-        System.out.println("°ø°İ·Â: " + OP);
-        System.out.println("¹æ¾î·Â: " + DP);
-        System.out.println("µ·: " + Money + "¿ø");
-        System.out.println("°æÇèÄ¡: " + EXP+ "/" + MaxEXP);
-        System.out.println("===========================================================");
-	}
-	public void GetItem(String name,int n) {
-		item.put(name,n);
-	}
+	
 	public void ShowInventory() {
-		System.out.println("==========================ÀÎº¥Åä¸®===========================");
-		for (String keyItemName : item.keySet()){ 
-		System.out.println(keyItemName + "\t" + item.get(keyItemName) + "°³"); 
-		} 
+		System.out.println("========================Inventory==========================");
+		for (Item i : item_status){ 
+			i.Show();
+		}
 		System.out.println("===========================================================");
-	}	
+	}
+	
+	/*public void ShowSkill() {
+		System.out.println("==========================Skill============================");
+		for (Skill s : skill_status){ 
+			s.Show();
+		}
+		System.out.println("===========================================================");
+	}*/
+	
+	
+	public boolean hasItem(Item item) {
+		for(Item i : item_status) {
+			if (i.getName().equals(item.getName())) return true;
+		}
+		return false;
+	}
 }
