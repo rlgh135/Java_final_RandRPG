@@ -4,12 +4,19 @@ class Player {
 	private Status status;
 	private ArrayList<Item> item_status;
 	private ArrayList<Skill> skill_status;
-	//private int money;
+	//수정
+	public skillStructure[] skillstrucure= new skillStructure[5];
+	//
 
 	Player(){//초기 캐릭터 설정값
 		status = new Status(50, 50, 1, 5, 4, 4);
 		item_status = new ArrayList<Item>();
 		skill_status = new ArrayList<Skill>();
+		//수정
+		for(int i=0;i<skillstrucure.length;i++) {
+			skillstrucure[i]=new skillStructure();
+		}
+		//
 	}
 	Player(int _hp, int _mp, int _level, int _exp, int _ad, int _dp, boolean[] have_items){
 		status = new Status(_hp, _mp, _level, _exp, _ad, _dp);
@@ -60,7 +67,13 @@ class Player {
 		if(status.exp>=status.maxExp) {//레벨업할때마다 오를것들
 			status.exp=status.exp%status.maxExp;
 			status.level++;
-			status.maxExp+=50;
+			//수정
+			if(status.level%3==0) {
+				Skill.lev_skillList(skillstrucure);
+			}
+			//끗
+			status.maxExp+=10;
+			//수치
 			status.maxHp+=10;
 			status.maxMp+=10;
 			status.hp=status.maxHp+status.pmaxHp;
@@ -79,15 +92,18 @@ class Player {
 		}
 		System.out.println("===========================================================");
 	}
-	
-	/*public void ShowSkill() {
+	//수정
+	public void ShowSkill() {
+		Skill.chooseSkill(skillstrucure);
+		/*
 		System.out.println("==========================Skill============================");
 		for (Skill s : skill_status){ 
 			s.Show();
 		}
 		System.out.println("===========================================================");
-	}*/
-	
+		*/
+	}
+	//
 	
 	public boolean hasItem(Item item) {
 		for(Item i : item_status) {
