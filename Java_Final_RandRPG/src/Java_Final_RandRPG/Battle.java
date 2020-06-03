@@ -60,7 +60,7 @@ class Battle {
 		return false;
 	}
 	
-	public boolean Run(int percent) {
+	public static boolean Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
 			System.out.println("You ran away successfully.");
@@ -84,10 +84,10 @@ class Battle {
 		if(monster instanceof Boss) player.PlusExp(monster.getStatus().level*10);
 		else player.PlusExp(monster.getStatus().level*5);
 	}
-	
+	//수정
 	public void Skill() {
-		System.out.println("Choose one.");
-		//player.ShowSkill();
+		player.ShowSkill();
 	}
+	//
 
 }
