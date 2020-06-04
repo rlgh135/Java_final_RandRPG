@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 class Map {
   private char[][] map = new char[5][5];
@@ -14,12 +14,18 @@ class Map {
     exit();
     location(row, col);
   }
-  public Map(int col, int row, int level){
+  public Map(int col, int row, int g_col, int g_row, int level){
     this.col = col;
     this.row = row;
     this.level = level;
-    exit();
+    this.g_col = g_col;
+    this.g_row = g_row;
     location(row, col);
+  }
+  public ArrayList<Integer> Info() {
+	  ArrayList<Integer> l = new ArrayList<Integer>();
+	  l.add(col); l.add(row); l.add(g_col); l.add(g_row); l.add(level);
+	  return l;
   }
   public void monster_exists(){
     Random rand = new Random();
@@ -77,13 +83,17 @@ class Map {
     return false;
   }
   public void print_map(){
-    System.out.println("w:up s:down a:left d:right");
     for(int i = 0; i < 5; i++){
       for(int j = 0; j < 5; j++)
         System.out.print("|"+map[i][j]+"|");
       System.out.println();
     }
     System.out.println("Level of Top: "+level);
+    System.out.println("w:up s:down a:left d:right");
+    System.out.println("1. save");
+    System.out.println("2. information");
+    System.out.println("3. inventory");
+    System.out.println("0. game off");
     System.out.println();
   }
 }

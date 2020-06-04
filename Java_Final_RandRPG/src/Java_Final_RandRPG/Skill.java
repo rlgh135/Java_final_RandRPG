@@ -3,9 +3,9 @@ import java.util.*;
 public class Skill {
 	/*
 	메인에서 선언
-	skillStructure[] s=new skillStructure[5];
+	SkillStructure[] s=new SkillStructure[5];
 	  for(int i=0;i<s.length;i++) {
-			s[i]=new skillStructure();
+			s[i]=new SkillStructure();
 		}
 	사용 예시:
 	전투시 스킬 확인 - chooseSkill
@@ -30,11 +30,11 @@ public class Skill {
 	}*/
 	
 	// 전투 시 스킬 사용 선택 시 불러오는 메소드 스킬 정보를 출력해주고 번호를 받아 useSkill로 넘겨준다
-	public static void chooseSkill(skillStructure[] s) {
+	public static void chooseSkill(SkillStructure[] s) {
 		int choose=-1;
 		int Skill_Num=-1;
 		int Skill_ChoiceTimes=0;
-		Scanner sc= new Scanner(System.in);
+		Scanner sc = Main.sc;
 		if(s[0].Skill_No==-1) {
 			System.out.println("습득한 스킬이 없습니다.");
 			sc.close();
@@ -48,7 +48,6 @@ public class Skill {
 		}
 		System.out.println("9.사용취소");
 		choose=sc.nextInt();
-		// sc.close();
 		if(choose==9)
 			return;
 		Skill_Num=s[choose-1].Skill_No;
@@ -80,13 +79,13 @@ public class Skill {
 	}
 	
 	// 스킬 습득 가능 레벨에 메인에서 불러오기 랜덤하게 배울 스킬을 생성해줌
-	public static void lev_skillList(skillStructure[] s) {
+	public static void lev_skillList(SkillStructure[] s) {
 		int num_skill1= 0;
 		int num_skill2= 0;
 		int num_skill3= 0;
 		int trigger= -1;
 		boolean stop= false;
-		Scanner sc= new Scanner(System.in);
+		Scanner sc = Main.sc;
 		Random rand = new Random();
 		
 		while(!stop) {
@@ -108,13 +107,11 @@ public class Skill {
         	}
 		
 		showSkill(num_skill1, num_skill2, num_skill3);
-		
 		trigger=sc.nextInt();
-		//sc.close();
 		if(trigger==9) {
 			return;
 		}
-		learnSkill(trigger ,s);
+		learnSkill(trigger, s, false);
 	}
 	
 	// 랜덤 선택시 스킬 보여줌
@@ -145,7 +142,7 @@ public class Skill {
 			System.out.println("2. Smite");
 			break;
 		case 3:
-			System.out.println("3. Defence");
+			System.out.println("3. Ignite");
 			break;
 		case 4:
 			System.out.println("4. Run");
@@ -160,7 +157,7 @@ public class Skill {
 			System.out.println("2. Smite");
 			break;
 		case 3:
-			System.out.println("3. Defence");
+			System.out.println("3. Ignite");
 			break;
 		case 4:
 			System.out.println("4. Run");
@@ -171,11 +168,11 @@ public class Skill {
 	}
 	
 	//lev_skillList로부터 호출, 스킬을 스킬 스트럭쳐에 기록함
-	public static void learnSkill(int trigger, skillStructure[] s) {
+	public static void learnSkill(int trigger, SkillStructure[] s, boolean isload) {
 		switch(trigger) {
 		// trigger를 받아서 트리거에 해당하는 번호 스킬내용을 구조체에 기록
 		case 1:
-			System.out.println("Learn Heal");
+			if (!isload) System.out.println("Learn Heal");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=1;
@@ -194,7 +191,7 @@ public class Skill {
 			break;
 			
 		case 2:
-			System.out.println("Learn Smite");
+			if (!isload) System.out.println("Learn Smite");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=2;
@@ -213,7 +210,7 @@ public class Skill {
 			break;
 			
 		case 3:
-			System.out.println("Learn Ignite");
+			if (!isload) System.out.println("Learn Ignite");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=3;
@@ -232,7 +229,7 @@ public class Skill {
 			break;
 			
 		case 4:
-			System.out.println("Learn Run");
+			if (!isload) System.out.println("Learn Run");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=4;
@@ -271,4 +268,5 @@ public class Skill {
 	public static void Run(/*Player p,*/int Skill_ChoiceTimes) {
 		Battle.Run(100);
 	}	
-}	
+}
+
