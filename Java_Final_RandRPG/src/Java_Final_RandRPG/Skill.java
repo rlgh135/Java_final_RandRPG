@@ -14,7 +14,7 @@ public class Skill {
 
 	/*
 	// 비전투시 스킬 인포를 불러오는 창 메인에서 호출
-	public void infoSkill(SkillStructure[] s) {
+	public void infoSkill(skillStructure[] s) {
 		if(s[0].Skill_No==-1) {
 			System.out.println("No skill you learned.");
 			return;
@@ -107,7 +107,6 @@ public class Skill {
         	}
 		
 		showSkill(num_skill1, num_skill2, num_skill3);
-		
 		trigger=sc.nextInt();
 		if(trigger==9) {
 			return;
@@ -270,3 +269,4 @@ public class Skill {
 		Battle.Run(100);
 	}	
 }
+

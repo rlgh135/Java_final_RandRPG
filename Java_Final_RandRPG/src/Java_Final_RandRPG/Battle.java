@@ -106,10 +106,11 @@ class Battle {
 		else temp = monster.getStatus().level*5;
 		player.PlusExp(temp);
 	}
-	
+	//수정
 	public void Skill() {
 		System.out.println("Choose one.");
 		player.ShowSkill();
 	}
+	//
 
 }

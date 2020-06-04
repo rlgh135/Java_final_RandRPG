@@ -144,6 +144,7 @@ class Player {
 		}
 		return false;
 	}
+  
 	public boolean canAddSet(Set set) {
 		HashSet<Integer> hash_set = new HashSet<Integer>();
 		for(Item i : item_status) hash_set.add(i.getNo());
@@ -155,8 +156,10 @@ class Player {
 		}
 		return true;	
 	}
+  
 	public void loadSkill(int no, int times) {
 		for(int i=0; i<times; i++)
 		Skill.learnSkill(no, skillstructure, true);
 	}
 }
+
