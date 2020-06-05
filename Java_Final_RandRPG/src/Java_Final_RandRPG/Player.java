@@ -133,6 +133,10 @@ class Player {
 		return new Status(status);
 	}
 	
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
 	public void ShowSkill() {
 		Skill.chooseSkill(skillstructure);
 	}
