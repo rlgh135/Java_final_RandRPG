@@ -26,7 +26,7 @@ class Battle {
 				break;
 			case '2':
 				Skill();
-				continue;
+				break;
 			case '3':
 				player.Show();
 				continue;
@@ -35,9 +35,11 @@ class Battle {
 				continue;
 			case '0':
 				if (!isboss) {
-					if (Run(25)) return false;
+					Run(25);
 					break;
 				}
+				System.out.println("Wrong input.");
+				continue;
 			default:
 				System.out.println("Wrong input.");
 				continue;
@@ -64,14 +66,15 @@ class Battle {
 		return false;
 	}
 	
-	public static boolean Run(int percent) {
+	public static void Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
 			System.out.println("You ran away successfully.\n");
-			return true;
+			Main.menu_Start();
 		}
-		System.out.println("You couldn't get away.\n");
-		return false;
+		else{
+			System.out.println("You couldn't get away.\n");
+		}
 	}
 	
 	public void Result(ArrayList<Item> items, ArrayList<Set> sets, int percent) {
@@ -106,11 +109,9 @@ class Battle {
 		else temp = monster.getStatus().level*5;
 		player.PlusExp(temp);
 	}
-	//수정
+	
 	public void Skill() {
 		System.out.println("Choose one.");
 		player.ShowSkill();
 	}
-	//
 
-}
