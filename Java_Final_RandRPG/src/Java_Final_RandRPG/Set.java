@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 public class Set {
@@ -16,11 +18,19 @@ public class Set {
 		return no;
 	}
 	public void Show() {
-		System.out.println("Set : " + name);
-		System.out.println("Hp : " + status.pmaxHp);
-		System.out.println("Mp : " + status.pmaxMp);
-		System.out.println("Ad : " + status.pad);
-		System.out.println("Dp : " + status.pdp);
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("\tSet : " + name);
+		System.out.println("\t\t\t\t\t|");
+		System.out.println("\tHp : " + status.pmaxHp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.println("\tMp : " + status.pmaxMp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.println("\tAd : " + status.pad);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.println("\tDp : " + status.pdp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.println(" -------------------------------------------------------");
+		System.out.println();
 	}
 	public Status getStatus() {
 		return new Status(status);

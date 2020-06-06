@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 public class Item {
 	private int no;
 	private String name;
@@ -28,14 +30,25 @@ public class Item {
 	}
 	
 	public void Show() {
-		System.out.println("Item name : " + name);
-		System.out.println("Item description : " + desc);
-		System.out.println("Theme : " + theme);
-		System.out.println("Grade : " + grade);
-		System.out.println("Hp : " + status.pmaxHp);
-		System.out.println("Mp : " + status.pmaxMp);
-		System.out.println("Ad : " + status.pad);
-		System.out.println("Dp : " + status.pdp);
+		System.out.println(" -------------------------------------------------------");
+		System.out.print("|\tItem name : " + name);
+		System.out.println("\t\t\t\t|");
+		System.out.print("|\tItem description : " + String.format("%-20s", desc));
+		System.out.println("\t\t|");
+		System.out.print("|\tTheme : " + String.format("%-20s", theme));
+		System.out.println("\t\t\t|");
+		System.out.print("|\tGrade : " + grade);
+		System.out.println("\t\t\t\t\t|");
+		System.out.print("|\tHp : " + status.pmaxHp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tMp : " + status.pmaxMp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tAd : " + status.pad);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tDp : " + status.pdp);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print(" -------------------------------------------------------");
+		System.out.println();
 	}
 	
 	public Status getStatus() {

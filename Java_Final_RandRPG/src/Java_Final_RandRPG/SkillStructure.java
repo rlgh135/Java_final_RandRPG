@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 public class SkillStructure {
 	int Skill_No;
 	int ChoiceTimes;

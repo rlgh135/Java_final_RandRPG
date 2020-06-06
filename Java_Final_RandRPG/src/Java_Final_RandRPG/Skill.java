@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 public class Skill {

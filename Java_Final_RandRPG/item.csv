@@ -1,3 +1,21 @@
-Name,Description,Hp,Mp,Ad,Dp
-xoxown,It's my name.,10,0,0,0
-Mac book,It's my laptop.,0,0,5,0
+No.,Name,Description,Hp,Mp,Ad,Dp,Grade,Set
+1,USB,Prof.Ahn's USB,0,0,0,5,N,Computer Science
+2,Memory chip,Prof.Ahn's Memory chip,0,0,5,0,N,Computer Science
+3,Wifi,N-wifi,10,0,5,5,N,Computer Science
+4,Java programming,N-java programming ,0,0,10,5,N,Computer Science
+5,Charger,Prof.Kwang's charger,0,0,20,10,A,Computer Science
+6,Black belt,Prof.Ji's black belt,0,0,10,5,N,Law
+7,CriminalLaw,A textbook of Law,0,0,5,0,N,Law
+8,CivilLaw,A textbook of Law,0,0,0,5,N,Law
+9,BF Law book,A needlessly large major book,0,0,15,0,N,Law
+10,Constitution,Prof.Ji's book,0,0,15,15,A,Law
+11,Engineering Calculator,Prof.Na's cherishes,0,0,10,0,N,Mechanical Engineering
+12,Lab Goggles,Prof.Kim's Goggles,10,0,0,5,N,Mechanical Engineering
+13,Old Green Windbreaker,Prof.Na's cherishes,0,0,0,15,N,Mechanical Engineering
+14,Mechanics Textbook,A Textbook,0,0,20,0,N,Mechanical Engineering
+15,Titanium Spanner,Prof.Na's Spanner,0,0,30,0,A,Mechanical Engineering
+16,Poisoned beaker,Prof.Do's beaker,5,0,0,0,N,Life Science
+17,Broken flask,Prof.Han's flask,0,0,5,0,N,Life Science
+18,Dirty glasses,Prof.Do's glasses,0,0,0,5,N,Life Science
+19,Rat,Experimental rat,5,5,2,2,N,Life Science
+20,KF-94 Mask,Rare Mask,50,20,10,10,A,Life Science

@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 class Battle {
@@ -14,12 +16,7 @@ class Battle {
 	public boolean Progress(Scanner sc) {
 		monster.Show();
 		while (true) {
-			System.out.println("Choose one.");
-			System.out.println("1. attack");
-			System.out.println("2. skill");
-			System.out.println("3. information");
-			System.out.println("4. item");
-			if (!isboss) System.out.println("0. run");
+			Interface.show_battle(isboss);
 			switch(sc.next().charAt(0)) {
 			case '1':
 				if (Attack()) return true;
@@ -67,7 +64,7 @@ class Battle {
 	public static boolean Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
-			System.out.println("You ran away successfully.\n");
+			
 			return true;
 		}
 		System.out.println("You couldn't get away.\n");
@@ -85,7 +82,7 @@ class Battle {
 				i++;
 			}
 			if(!player.hasItem(it)) {
-				System.out.println("You get a item.\n");
+				System.out.println("\t\t\tYou get a item.\n");
 				it.Show();
 				
 				player.AddItem(it);

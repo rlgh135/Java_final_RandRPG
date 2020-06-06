@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 public class Boss extends Monster{
 	
 	Boss(String _name, int _hp, int _mp, int _level, int _exp, int _ad, int _dp){

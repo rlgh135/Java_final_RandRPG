@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 public class Status {
 	public int maxHp, hp, maxMp, mp, level, exp, maxExp, ad, dp, pad, pdp, pmaxHp, pmaxMp;
 	public Status(int _hp, int _mp, int _level, int _exp, int _ad, int _dp){
@@ -49,12 +51,22 @@ public class Status {
 	}
 	
 	public void Show() {
-		System.out.printf("LEVEL : %d\n", level);
-		System.out.printf("EXP : %d / %d\n", exp, maxExp);
-		System.out.printf("HP : %d / %d(+ %d)\n", hp, maxHp, pmaxHp);
-		System.out.printf("MP : %d / %d(+ %d)\n", mp, maxMp, pmaxMp);
-		System.out.printf("AD : %d(+ %d)\n", ad, pad);
-		System.out.printf("DP : %d(+ %d)\n", dp, pdp);
+		System.out.println(" -------------------------");
+		System.out.println("|\t\t\t  |");
+		System.out.printf("|      LEVEL : %d", level);
+		System.out.println("\t  |");
+		System.out.printf("|      EXP : %d / %d", exp, maxExp);
+		System.out.println("\t  |");
+		System.out.printf("|      HP : %d / %d(+ %d)", hp, maxHp, pmaxHp);
+		System.out.println("  |");
+		System.out.printf("|      MP : %d / %d(+ %d)", mp, maxMp, pmaxMp);
+		System.out.println("  |");
+		System.out.printf("|      AD : %d(+ %d)", ad, pad);
+		System.out.println("\t  |");
+		System.out.printf("|      DP : %d(+ %d)", dp, pdp);
+		System.out.println("\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println(" -------------------------");
 	}
 
 }

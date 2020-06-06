@@ -1,9 +1,12 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 class Map {
   private char[][] map = new char[5][5];
   private int col, row;
   private int g_col, g_row;
+  private int final_level = 5;
   public int level;
   public boolean is_there_m;
   
@@ -27,7 +30,7 @@ class Map {
 	  l.add(col); l.add(row); l.add(g_col); l.add(g_row); l.add(level);
 	  return l;
   }
-  public void monster_exists(){
+  private void monster_exists(){
     Random rand = new Random();
     is_there_m = rand.nextBoolean();
   }
@@ -83,17 +86,25 @@ class Map {
     return false;
   }
   public void print_map(){
+	System.out.println();
+	System.out.println("\t\t MAP");
+	System.out.println("--------------------------------------");
+	System.out.println("\t Level of Tower : " + level);
+	System.out.println();
     for(int i = 0; i < 5; i++){
+    	System.out.print("\t");
       for(int j = 0; j < 5; j++)
-        System.out.print("|"+map[i][j]+"|");
-      System.out.println();
+        System.out.print("|"+map[i][j]+"| ");
+      System.out.println("\n");
     }
-    System.out.println("Level of Top: "+level);
-    System.out.println("w:up s:down a:left d:right");
-    System.out.println("1. save");
-    System.out.println("2. information");
-    System.out.println("3. inventory");
-    System.out.println("0. game off");
-    System.out.println();
+    System.out.println("--------------------------------------\n");
+    Interface.show_play();
+  }
+  public boolean EOG() {
+	  if(level > final_level) {
+		  Interface.show_ending();
+		  return true;
+	  }
+	  return false;
   }
 }
