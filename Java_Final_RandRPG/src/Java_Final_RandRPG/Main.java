@@ -18,8 +18,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		load_GameSystem();
-		Interface.show_description();
-		System.exit(0);
+//		Interface.show_description();
+//		System.exit(0);
 		menu_Main();
 		
 		menu_GameOff();
@@ -85,7 +85,7 @@ public class Main {
 				continue;
 			}
 			if (map.is_there_m) {
-				
+				Interface.start_battle();
 				menu_Battle();
 			}
 		}
@@ -96,7 +96,7 @@ public class Main {
 		save_Map();
 		save_Inventory();
 		save_Skill();
-		System.out.println("\nGame Saved...");
+		Interface.saved();
 	}
 	
 	public static void save_Player() {

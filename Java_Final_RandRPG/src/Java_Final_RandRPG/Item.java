@@ -30,25 +30,24 @@ public class Item {
 	}
 	
 	public void Show() {
-		System.out.println(" -------------------------------------------------------");
-		System.out.print("|\tItem name : " + name);
-		System.out.println("\t\t\t\t|");
-		System.out.print("|\tItem description : " + String.format("%-20s", desc));
+		System.out.println(" --------------------------------------------------------------");
+		System.out.printf("|\tItem name : %-30s", name);
 		System.out.println("\t\t|");
-		System.out.print("|\tTheme : " + String.format("%-20s", theme));
+		System.out.print("|\tItem description : " + String.format("%-20s", desc));
 		System.out.println("\t\t\t|");
+		System.out.print("|\tTheme : " + String.format("%-20s", theme));
+		System.out.println("\t\t\t\t|");
 		System.out.print("|\tGrade : " + grade);
-		System.out.println("\t\t\t\t\t|");
-		System.out.print("|\tHp : " + status.pmaxHp);
 		System.out.println("\t\t\t\t\t\t|");
-		System.out.print("|\tMp : " + status.pmaxMp);
-		System.out.println("\t\t\t\t\t\t|");
-		System.out.print("|\tAd : " + status.pad);
-		System.out.println("\t\t\t\t\t\t|");
-		System.out.print("|\tDp : " + status.pdp);
-		System.out.println("\t\t\t\t\t\t|");
-		System.out.print(" -------------------------------------------------------");
-		System.out.println();
+		System.out.print("|\tHP : " + status.pmaxHp);
+		System.out.println("\t\t\t\t\t\t\t|");
+		System.out.print("|\tMP : " + status.pmaxMp);
+		System.out.println("\t\t\t\t\t\t\t|");
+		System.out.print("|\tAD : " + status.pad);
+		System.out.println("\t\t\t\t\t\t\t|");
+		System.out.print("|\tDP : " + status.pdp);
+		System.out.println("\t\t\t\t\t\t\t|");
+		System.out.println(" --------------------------------------------------------------");
 	}
 	
 	public Status getStatus() {

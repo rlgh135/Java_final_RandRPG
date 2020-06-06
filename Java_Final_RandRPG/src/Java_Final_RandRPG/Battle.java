@@ -15,6 +15,7 @@ class Battle {
 	
 	public boolean Progress(Scanner sc) {
 		monster.Show();
+		player.Show();
 		while (true) {
 			Interface.show_battle(isboss);
 			switch(sc.next().charAt(0)) {
@@ -35,6 +36,8 @@ class Battle {
 					if (Run(25)) return false;
 					break;
 				}
+				System.out.println("Wrong input.");
+				continue;
 			default:
 				System.out.println("Wrong input.");
 				continue;
@@ -44,36 +47,38 @@ class Battle {
 	}
 	
 	public boolean Attack() {
-		System.out.println("You attack.");
+		Interface.show_attack();
 		if (monster.Attacked(player.Damage())) {
 			return true;
 		}
 		monster.Show();
+		Interface.enterAnyKey();
 		return false;
 	}
 	
 	public boolean Attacked() {
-		System.out.println("You're attacked.");
+		Interface.show_attacked();
 		if (player.Attacked(monster.Damage())) {
 			return true;
 		}
 		player.Show();
+		Interface.enterAnyKey();
 		return false;
 	}
 	
 	public static boolean Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
-			
+			Interface.show_run(true);
 			return true;
 		}
-		System.out.println("You couldn't get away.\n");
+		Interface.show_run(false);
 		return false;
 	}
 	
 	public void Result(ArrayList<Item> items, ArrayList<Set> sets, int percent) {
 
-		System.out.println("Monster Die.\n");
+		Interface.monster_die();
 		if (new Random().nextInt(100) < percent) {
 			Item it = items.get(new Random().nextInt(items.size()));
 			int i=0;
@@ -90,13 +95,14 @@ class Battle {
 				
 				for(Set set : sets) {
 					if (player.canAddSet(set)) {
-						System.out.println("The set has been added.\n");
+						System.out.println("\t\t\tThe set has been added.\n");
 						set.Show();
 						player.AddSet(set);
 						player.PlusSet(set);
 					}
 				}
 			}
+			Interface.enterAnyKey();
 		}
 		int temp = 0;
 		if(isboss) temp = monster.getStatus().level*10;
@@ -105,7 +111,6 @@ class Battle {
 	}
 	//수정
 	public void Skill() {
-		System.out.println("Choose one.");
 		player.ShowSkill();
 	}
 	//

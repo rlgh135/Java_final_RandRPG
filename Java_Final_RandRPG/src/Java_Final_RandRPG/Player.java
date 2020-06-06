@@ -9,10 +9,11 @@ class Player {
 	public SkillStructure[] skillstructure = new SkillStructure[5];
 	public boolean is_there_item = false;
 	public boolean is_there_set = false;
+	public static Scanner sc = new Scanner(System.in);
 	//private int money;
 
 	Player(){//초기 캐릭터 설정값
-		status = new Status(30, 50, 1, 5, 20, 4);
+		status = new Status(30, 20, 1, 5, 20, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
 		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
@@ -89,7 +90,7 @@ class Player {
 		else
 			status.hp -= damage - status.dp - status.pdp;
 		if (status.hp <= 0) {
-			System.out.println("YOU DIE.");
+			Interface.player_die();
 			return true;
 		}
 		return false;
@@ -121,7 +122,7 @@ class Player {
 			status.mp=status.maxMp+status.pmaxMp;
 			status.ad+=2;
 			status.dp+=2;
-			System.out.println("Congratulations!! Lv."+status.level);
+			Interface.lv_up(status.level);
 			this.status.Show();
 		}
 	}
@@ -146,11 +147,11 @@ class Player {
 	}
 	
 	public Status getStatus() {
-		return new Status(status);
+		return status;
 	}
 	
 	public void ShowSkill() {
-		Skill.chooseSkill(skillstructure);
+		Skill.chooseSkill(skillstructure, sc);
 	}
 	
 	

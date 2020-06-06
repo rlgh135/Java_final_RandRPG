@@ -135,18 +135,67 @@ public class Interface {
 		}
 		System.out.println("|\t\t\t  |");
 		System.out.println(" -------------------------");
+		
+		System.out.print("Your Choice.. => ");
 	}
 	
-	public static void attack() {
-		
+	public static void start_battle() {
+		System.out.println();
+		System.out.println(" -------------------------------");
+		System.out.println("|\t\t\t\t|");
+		System.out.println("|  Monster Appearance!!!\t|");
+		System.out.println("|\t\t\t\t|");
+		System.out.println("|  Let's Start the Battle!\t|");
+		System.out.println("|\t\t\t\t|");
+		System.out.println(" -------------------------------\n");
+		enterAnyKey();
 	}
 	
-	public static void attacked() {
-		
+	public static void show_attack() {
+		System.out.println("\n\n -------------------------");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.print("| You Attack the Monster!!");
+		System.out.println("|");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println(" -------------------------");
 	}
 	
-	public static void Run() {
-		
+	public static void show_attacked() {
+		System.out.println("\n\n ---------------------------------------");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.print("|  You're Attacked from the Monster!!");
+		System.out.println("\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println(" ---------------------------------------");
+	}
+	
+	public static void show_run(boolean run) {
+		System.out.println();
+		if(run) {
+			System.out.println(" ---------------------------------------");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.print("|  You succeeded in running away.");
+			System.out.println("\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println(" ---------------------------------------");
+			enterAnyKey();
+		}
+		else {
+			System.out.println(" ---------------------------------------");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.print("|  Oops..you failed to get away.");
+			System.out.println("\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println("|\t\t\t\t\t|");
+			System.out.println(" ---------------------------------------");
+		}
 	}
 	
 	public static void HasNoItems() {
@@ -160,6 +209,84 @@ public class Interface {
 		System.out.println(" -------------------------");
 	}
 	
+	public static void inventory_description() {
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.print("|\tTheme : If you have Items with the same theme, the Set effect could occur.");
+		System.out.println("\t\t\t|");
+		System.out.print("|\tGrade : N -> Normal Item, A -> Core Item");
+		System.out.println("\t\t\t\t\t|");
+		System.out.print("|\tHP : Increase MaxHP by number");
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tMP : Increase MaxMP by number");
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tAD : Increase AD by number");
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print("|\tDP : Increase DP by number");
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.print(" -------------------------------------------------------");
+	}
+	
+	public static void hasNoSkills() {
+		System.out.println("\n\n ---------------------------------------");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.print("| You haven't learned any skills yet.");
+		System.out.println("\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println("|\t\t\t\t\t|");
+		System.out.println(" ---------------------------------------");
+		enterAnyKey();
+	}
+	
+	public static void monster_die() {
+		System.out.println(" -------------------------");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.print("|     Monster Died");
+		System.out.println("\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println(" -------------------------");
+	}
+	public static void player_die() {
+		System.out.println();
+		System.out.println("\t\t\t\t    YOU DIED..");
+		System.out.println(" ------------------------------------------------------------------------------");
+		System.out.println("|\t\t\t\t\t\t\t\t\t\t|");
+		System.out.print("|  Not only the HGU but the world has been destroyed by DIGITAL ZOMBIES...");
+		System.out.println("\t|");
+		System.out.println("|\t\t\t\t\t\t\t\t\t\t|");
+		System.out.print("|\t\t\tAnd No one could save the world...");
+		System.out.println("\t\t\t|");
+		System.out.println("|\t\t\t\t\t\t\t\t\t\t|");
+		System.out.println(" ------------------------------------------------------------------------------");
+		System.out.println();
+	}
+	
+	public static void lv_up(int level) {
+		System.out.println("\t\tLevel Up!");
+		System.out.println(" -------------------------------");
+		System.out.println("|\t\t\t\t|");
+		System.out.printf("|\tCongratulations!!");
+		System.out.println("\t|");
+		System.out.println("|\t\t\t\t|");
+		System.out.printf("|\tYou're Lv.%2d", level);
+		System.out.println("\t\t|");
+		System.out.println("|\t\t\t\t|");
+		System.out.println(" -------------------------------");
+	}
+	
+	public static void saved() {
+		System.out.println("\n\n -------------------------");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.print("|     Game Saved..");
+		System.out.println("\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println("|\t\t\t  |");
+		System.out.println(" -------------------------");
+	}
 	public static void enterAnyKey() {
 		System.out.println();
 		System.out.print("Enter Any key to Continue..  ");
@@ -172,12 +299,12 @@ public class Interface {
 		System.out.println("\t\t\tEnding Story");
 		System.out.println(" -------------------------------------------------------");
 		System.out.println("|\t\t\t\t\t\t\t|");
-		System.out.print("|  디지털 좀비들은 모두 사라졌고...");
-		System.out.println("\t\t\t\t|");
-		System.out.print("|  모두 다시 평범한 일상으로 돌아갔다...");
-		System.out.println("\t\t\t\t|");
-		System.out.print("|  하지만 나는 다시 강력한 과제들과 싸움을 하고 있다..");
+		System.out.print("|  All the digital zombies are gone...");
+		System.out.println("\t\t\t|");
+		System.out.print("|  Everything went back to normal life...");
 		System.out.println("\t\t|");
+		System.out.print("|  But I'm still fighting with many Homeworks...");
+		System.out.println("\t|");
 		System.out.print("|  Oh Noooooo!!!!");
 		System.out.println("\t\t\t\t\t|");
 		System.out.println("|\t\t\t\t\t\t\t|");

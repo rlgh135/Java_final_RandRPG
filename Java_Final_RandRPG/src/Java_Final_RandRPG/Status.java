@@ -51,22 +51,22 @@ public class Status {
 	}
 	
 	public void Show() {
-		System.out.println(" -------------------------");
-		System.out.println("|\t\t\t  |");
-		System.out.printf("|      LEVEL : %d", level);
-		System.out.println("\t  |");
-		System.out.printf("|      EXP : %d / %d", exp, maxExp);
-		System.out.println("\t  |");
-		System.out.printf("|      HP : %d / %d(+ %d)", hp, maxHp, pmaxHp);
-		System.out.println("  |");
-		System.out.printf("|      MP : %d / %d(+ %d)", mp, maxMp, pmaxMp);
-		System.out.println("  |");
-		System.out.printf("|      AD : %d(+ %d)", ad, pad);
-		System.out.println("\t  |");
-		System.out.printf("|      DP : %d(+ %d)", dp, pdp);
-		System.out.println("\t  |");
-		System.out.println("|\t\t\t  |");
-		System.out.println(" -------------------------");
+		System.out.println(" ---------------------------");
+		System.out.println("|\t\t\t    |");
+		System.out.printf("|      LEVEL : %3d", level);
+		System.out.println("\t    |");
+		System.out.printf("|      EXP : %3d / %3d", exp, maxExp);
+		System.out.println("\t    |");
+		System.out.printf("|      HP : %3d / %3d(+ %2d)", hp, maxHp, pmaxHp);
+		System.out.println(" |");
+		System.out.printf("|      MP : %3d / %3d(+ %2d)", mp, maxMp, pmaxMp);
+		System.out.println(" |");
+		System.out.printf("|      AD : %3d(+ %3d)", ad, pad);
+		System.out.println("\t    |");
+		System.out.printf("|      DP : %3d(+ %3d)", dp, pdp);
+		System.out.println("\t    |");
+		System.out.println("|\t\t\t    |");
+		System.out.println(" ---------------------------");
 	}
 
 }

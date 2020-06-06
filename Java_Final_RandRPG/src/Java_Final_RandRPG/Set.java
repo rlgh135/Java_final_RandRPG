@@ -18,16 +18,19 @@ public class Set {
 		return no;
 	}
 	public void Show() {
-		System.out.println(" -------------------------------------------------------");
-		System.out.println("\tSet : " + name);
-		System.out.println("\t\t\t\t\t|");
-		System.out.println("\tHp : " + status.pmaxHp);
+		System.out.println(" -----------------------------------------------------------------------");
+		System.out.printf("\tSet : %-50s", name);
+		System.out.println("\t|");
+		System.out.println("|\t\t\t\t\t\t\t\t\t|");
+		System.out.printf("|\t\t\tEFFECT");
 		System.out.println("\t\t\t\t\t\t|");
-		System.out.println("\tMp : " + status.pmaxMp);
+		System.out.printf("|\t\tHp : %-3d", status.pmaxHp);
 		System.out.println("\t\t\t\t\t\t|");
-		System.out.println("\tAd : " + status.pad);
+		System.out.printf("|\t\tMp : %-3d", status.pmaxMp);
 		System.out.println("\t\t\t\t\t\t|");
-		System.out.println("\tDp : " + status.pdp);
+		System.out.printf("|\t\tAd : %-3d", status.pad);
+		System.out.println("\t\t\t\t\t\t|");
+		System.out.printf("|\t\tDp : %-3d", status.pdp);
 		System.out.println("\t\t\t\t\t\t|");
 		System.out.println(" -------------------------------------------------------");
 		System.out.println();
