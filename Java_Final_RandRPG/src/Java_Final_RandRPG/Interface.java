@@ -46,7 +46,7 @@ public class Interface {
 		System.out.println("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
 		System.out.print("|  1. Professors are trapped at the top of the tower (5th floor).");
 		System.out.println("\t\t\t\t\t|");
-		System.out.print("|  2. To get to the next floor, you must destroy the Bosmonster at the exit (G) of each floor.");
+		System.out.print("|  2. To get to the next floor, you must destroy the Boss Monster at the exit (G) of each floor.");
 		System.out.println("\t\t|");
 		System.out.print("|  3. There are 25 rooms on each floor, and in each room there are Nomal Monsters randomly present.");
 		System.out.println("\t|");

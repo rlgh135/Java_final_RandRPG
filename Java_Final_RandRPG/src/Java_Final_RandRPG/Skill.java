@@ -270,4 +270,3 @@ public class Skill {
 		Battle.Run(100);
 	}	
 }
-
