@@ -16,7 +16,6 @@ public class Main {
 	public static ArrayList<Set> sets;
 	
 	public static void main(String[] args) {
-		
 		load_GameSystem();
 //		Interface.show_description();
 //		System.exit(0);
