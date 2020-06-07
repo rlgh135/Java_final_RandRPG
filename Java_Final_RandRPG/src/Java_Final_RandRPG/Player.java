@@ -150,6 +150,10 @@ class Player {
 		return status;
 	}
 	
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
 	public void ShowSkill() {
 		Skill.chooseSkill(skillstructure, sc);
 	}
