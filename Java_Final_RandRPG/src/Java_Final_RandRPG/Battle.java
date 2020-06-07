@@ -87,7 +87,7 @@ class Battle {
 				i++;
 			}
 			if(!player.hasItem(it)) {
-				System.out.println("\t\t\tYou get a item.\n");
+				System.out.println("\n\t\t\tYou get a item.");
 				it.Show();
 				
 				player.AddItem(it);
@@ -95,7 +95,7 @@ class Battle {
 				
 				for(Set set : sets) {
 					if (player.canAddSet(set)) {
-						System.out.println("\t\t\tThe set has been added.\n");
+						System.out.println("\t\t\tThe set has been added.");
 						set.Show();
 						player.AddSet(set);
 						player.PlusSet(set);

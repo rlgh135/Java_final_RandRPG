@@ -1,6 +1,6 @@
 Name,Hp,Mp,Level,Ad,Dp
 Baldmon,30,0,2,8,1
 DigiZomb,35,0,2,8,2
-DigiDemon,40,0,3,20,10
-LAN Zomb,32,0,3,18,10
-Hackmon,50,0,5,20,10
+DigiDemon,40,0,4,20,5
+LAN Zomb,32,0,3,18,5
+Hackmon,50,0,5,20,5

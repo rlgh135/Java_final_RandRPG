@@ -47,7 +47,7 @@ public class Interface {
 		System.out.print("|  1. Professors are trapped at the top of the tower (5th floor).");
 		System.out.println("\t\t\t\t\t|");
 		System.out.print("|  2. To get to the next floor, you must destroy the Boss Monster at the exit (G) of each floor.");
-		System.out.println("\t\t|");
+		System.out.println("\t|");
 		System.out.print("|  3. There are 25 rooms on each floor, and in each room there are Nomal Monsters randomly present.");
 		System.out.println("\t|");
 		System.out.print("|  4. If you catch monsters, you can get an item with a certain probability.");
@@ -261,7 +261,7 @@ public class Interface {
 	}
 	
 	public static void lv_up(int level) {
-		System.out.println("\t\tLevel Up!");
+		System.out.println("\n\t    Level Up!");
 		System.out.println(" -------------------------------");
 		System.out.println("|\t\t\t\t|");
 		System.out.printf("|\tCongratulations!!");
@@ -271,6 +271,7 @@ public class Interface {
 		System.out.println("\t\t|");
 		System.out.println("|\t\t\t\t|");
 		System.out.println(" -------------------------------");
+		enterAnyKey();
 	}
 	
 	public static void saved() {

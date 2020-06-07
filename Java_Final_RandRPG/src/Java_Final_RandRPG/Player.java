@@ -13,7 +13,7 @@ class Player {
 	//private int money;
 
 	public Player(){//초기 캐릭터 설정값
-		status = new Status(30, 20, 1, 5, 100, 4);
+		status = new Status(30, 20, 1, 5, 20, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
 		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
@@ -112,6 +112,7 @@ class Player {
 		status.exp+=n;
 		if(status.exp>=status.maxExp) {//레벨업할때마다 오를것들
 			status.level++;
+			Interface.lv_up(status.level);
 			if(status.level%3==0) {
 				Skill.lev_skillList(skillstructure);
 			}
@@ -122,7 +123,6 @@ class Player {
 			status.mp=status.maxMp+status.pmaxMp;
 			status.ad+=2;
 			status.dp+=2;
-			Interface.lv_up(status.level);
 			this.status.Show();
 		}
 	}
@@ -132,7 +132,7 @@ class Player {
 		if(is_there_item) {
 			System.out.println(" \t\t\tInventory");
 			for (Item i : item_status) i.Show();
-			System.out.println(" =======================================================");
+			System.out.println(" ==============================================================");
 		}
 		else {
 			Interface.HasNoItems();
@@ -141,7 +141,7 @@ class Player {
 			System.out.println();
 			System.out.println(" \t\t\tSet");
 			for (Set s : set_status) s.Show();
-			System.out.println(" =======================================================");
+			System.out.println(" ==============================================================");
 		}
 		
 	}
