@@ -111,10 +111,6 @@ public class Interface {
 	    System.out.print("Your Choice.. => ");
 	}
 	
-	public static void show_invenDescription() {
-		
-	}
-	
 	public static void show_battle(boolean is_boss) {
 		System.out.println("\n");
 		System.out.println("\tBattle Menu");

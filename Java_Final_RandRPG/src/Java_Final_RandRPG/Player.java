@@ -12,13 +12,13 @@ class Player {
 	public static Scanner sc = new Scanner(System.in);
 	//private int money;
 
-	Player(){//초기 캐릭터 설정값
-		status = new Status(30, 20, 1, 5, 20, 4);
+	public Player(){//초기 캐릭터 설정값
+		status = new Status(30, 20, 1, 5, 100, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
 		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
 	}
-	Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
+	public Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
 		status = new Status(0, 0, 0, 0, 0, 0);
 		status.maxHp = _maxHp;
 		status.hp = _hp;
