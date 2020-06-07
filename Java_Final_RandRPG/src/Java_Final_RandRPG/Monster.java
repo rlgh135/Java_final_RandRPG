@@ -33,7 +33,7 @@ public class Monster {
 	
 	public boolean Attacked(int damage) {
 		if(damage - status.dp - status.pdp <= 0)
-			status.hp -= -1;
+			status.hp -= 1;
 		else
 			status.hp -= damage - status.dp - status.pdp;
 		if (status.hp <= 0)
