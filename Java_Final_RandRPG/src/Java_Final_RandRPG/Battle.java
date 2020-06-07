@@ -66,7 +66,7 @@ class Battle {
 		return false;
 	}
 	
-	public static void Run(int percent) {
+	public static boolean Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
 			Interface.show_run(true);
