@@ -1,4 +1,5 @@
 Name,Hp,Mp,Level,Ad,Dp
-Goblin,7,0,1,5,0
-Troll,10,0,1,3,1
-Orge,15,0,1,2,4
+Zomb,14,0,1,8,0
+Dog Zomb,20,0,1,5,1
+Heavy Zomb,25,0,1,2,4
+Humanoid,18,0,1,10,5

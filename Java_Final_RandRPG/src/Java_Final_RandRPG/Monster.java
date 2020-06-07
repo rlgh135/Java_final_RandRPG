@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 public class Monster {
 	
 	public String name;
@@ -10,8 +12,7 @@ public class Monster {
 	}
 	
 	public void Show() {
-		System.out.println("Monster information\n");
-		System.out.printf("Name : %s\n", name);
+		System.out.printf("\n      Monster : %s\n", name);
 		status.Show();
 	}
 	

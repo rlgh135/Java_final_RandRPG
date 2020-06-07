@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 class Battle {
@@ -13,13 +15,9 @@ class Battle {
 	
 	public boolean Progress(Scanner sc) {
 		monster.Show();
+		player.Show();
 		while (true) {
-			System.out.println("Choose one.");
-			System.out.println("1. attack");
-			System.out.println("2. skill");
-			System.out.println("3. information");
-			System.out.println("4. item");
-			if (!isboss) System.out.println("0. run");
+			Interface.show_battle(isboss);
 			switch(sc.next().charAt(0)) {
 			case '1':
 				if (Attack()) return true;
@@ -49,37 +47,38 @@ class Battle {
 	}
 	
 	public boolean Attack() {
-		System.out.println("You attack.");
+		Interface.show_attack();
 		if (monster.Attacked(player.Damage())) {
 			return true;
 		}
 		monster.Show();
+		Interface.enterAnyKey();
 		return false;
 	}
 	
 	public boolean Attacked() {
-		System.out.println("You're attacked.");
+		Interface.show_attacked();
 		if (player.Attacked(monster.Damage())) {
 			return true;
 		}
 		player.Show();
+		Interface.enterAnyKey();
 		return false;
 	}
 	
 	public static void Run(int percent) {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
-			System.out.println("You ran away successfully.\n");
-			Main.menu_Start();
+			Interface.show_run(true);
+			return true;
 		}
-		else{
-			System.out.println("You couldn't get away.\n");
-		}
+		Interface.show_run(false);
+		return false;
 	}
 	
 	public void Result(ArrayList<Item> items, ArrayList<Set> sets, int percent) {
 
-		System.out.println("Monster Die.\n");
+		Interface.monster_die();
 		if (new Random().nextInt(100) < percent) {
 			Item it = items.get(new Random().nextInt(items.size()));
 			int i=0;
@@ -88,7 +87,7 @@ class Battle {
 				i++;
 			}
 			if(!player.hasItem(it)) {
-				System.out.println("You get a item.\n");
+				System.out.println("\t\t\tYou get a item.\n");
 				it.Show();
 				
 				player.AddItem(it);
@@ -96,13 +95,14 @@ class Battle {
 				
 				for(Set set : sets) {
 					if (player.canAddSet(set)) {
-						System.out.println("The set has been added.\n");
+						System.out.println("\t\t\tThe set has been added.\n");
 						set.Show();
 						player.AddSet(set);
 						player.PlusSet(set);
 					}
 				}
 			}
+			Interface.enterAnyKey();
 		}
 		int temp = 0;
 		if(isboss) temp = monster.getStatus().level*10;
@@ -111,7 +111,6 @@ class Battle {
 	}
 	
 	public void Skill() {
-		System.out.println("Choose one.");
 		player.ShowSkill();
 	}
-
+}

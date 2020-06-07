@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 import java.io.*;
 
@@ -16,23 +18,25 @@ public class Main {
 	public static void main(String[] args) {
 		
 		load_GameSystem();
-		
+//		Interface.show_description();
+//		System.exit(0);
 		menu_Main();
 		
 		menu_GameOff();
 	}
 	
 	public static void menu_Main() {
-		System.out.println("Choose one.");
-		System.out.println("1. start");
-		System.out.println("2. load");
-		System.out.println("0. game off");
+		Interface.show_intro();
 		system_Input();
 		switch(input) {
 		case '1':
+			Interface.show_description();
+			Interface.show_howToPlay();
 			menu_Start();
 			break;
 		case '2':
+			Interface.show_description();
+			Interface.show_howToPlay();
 			menu_Load();
 			break;
 		case '0':
@@ -63,9 +67,11 @@ public class Main {
 				continue;
 			case '2':
 				player.Show();
+				Interface.enterAnyKey();
 				continue;
 			case '3':
 				player.ShowInventory();
+				Interface.enterAnyKey();
 				continue;
 			case '0':
 				System.exit(0);
@@ -74,10 +80,12 @@ public class Main {
 			}
 			if (map.move(input)){
 				menu_Boss();
+				map.EOG();
 				system_StageUp();
 				continue;
 			}
 			if (map.is_there_m) {
+				Interface.start_battle();
 				menu_Battle();
 			}
 		}
@@ -88,6 +96,7 @@ public class Main {
 		save_Map();
 		save_Inventory();
 		save_Skill();
+		Interface.saved();
 	}
 	
 	public static void save_Player() {
@@ -152,7 +161,7 @@ public class Main {
 			System.exit(0);
 		}
 		for(ArrayList<Integer> l : player.getSkillsNo()) {
-			System.out.println(l.get(0) +" " + l.get(1));
+			//System.out.println(l.get(0) +" " + l.get(1));
 			outputStream.println(l.get(0) + " " + l.get(1));
 		}
 		outputStream.close();

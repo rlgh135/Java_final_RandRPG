@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*; 
 
 class Player {
@@ -5,15 +7,18 @@ class Player {
 	private ArrayList<Item> item_status;
 	private ArrayList<Set> set_status;
 	public SkillStructure[] skillstructure = new SkillStructure[5];
+	public boolean is_there_item = false;
+	public boolean is_there_set = false;
+	public static Scanner sc = new Scanner(System.in);
 	//private int money;
 
-	Player(){//초기 캐릭터 설정값
-		status = new Status(50, 50, 1, 5, 4, 4);
+	public Player(){//초기 캐릭터 설정값
+		status = new Status(30, 20, 1, 5, 100, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
 		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
 	}
-	Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
+	public Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
 		status = new Status(0, 0, 0, 0, 0, 0);
 		status.maxHp = _maxHp;
 		status.hp = _hp;
@@ -35,6 +40,7 @@ class Player {
 	
 	public void AddItem(Item item) {
 		item_status.add(item);
+		is_there_item = true;
 	}
 	public HashSet<Integer> getSetsNo() {
 		HashSet<Integer> setsNo = new HashSet<Integer>();
@@ -65,6 +71,7 @@ class Player {
 	}
 	public void AddSet(Set set) {
 		set_status.add(set);
+		is_there_set = true;
 	}
 	public void PlusSet(Set set) {
 		Status s = set.getStatus();
@@ -74,7 +81,7 @@ class Player {
 		status.pdp += s.pdp;
 	}
 	public void Show() {
-		System.out.println("Player information\n");
+		System.out.println("\n    Player information");
 		status.Show();
 	}
 	public boolean Attacked(int damage) {
@@ -83,7 +90,7 @@ class Player {
 		else
 			status.hp -= damage - status.dp - status.pdp;
 		if (status.hp <= 0) {
-			System.out.println("YOU DIE.");
+			Interface.player_die();
 			return true;
 		}
 		return false;
@@ -104,7 +111,6 @@ class Player {
 	public void PlusExp(int n) {
 		status.exp+=n;
 		if(status.exp>=status.maxExp) {//레벨업할때마다 오를것들
-			status.exp=status.exp%status.maxExp;
 			status.level++;
 			if(status.level%3==0) {
 				Skill.lev_skillList(skillstructure);
@@ -116,21 +122,32 @@ class Player {
 			status.mp=status.maxMp+status.pmaxMp;
 			status.ad+=2;
 			status.dp+=2;
-			System.out.println("Congratulations!! Lv."+status.level);
+			Interface.lv_up(status.level);
 			this.status.Show();
 		}
 	}
 	
 	public void ShowInventory() {
-		System.out.println("========================Inventory==========================");
-		for (Item i : item_status) i.Show();
-		System.out.println("==========================Set==============================");
-		for (Set s : set_status) s.Show();
-		System.out.println("===========================================================");
+		System.out.println();
+		if(is_there_item) {
+			System.out.println(" \t\t\tInventory");
+			for (Item i : item_status) i.Show();
+			System.out.println(" =======================================================");
+		}
+		else {
+			Interface.HasNoItems();
+		}
+		if(is_there_set) {
+			System.out.println();
+			System.out.println(" \t\t\tSet");
+			for (Set s : set_status) s.Show();
+			System.out.println(" =======================================================");
+		}
+		
 	}
 	
 	public Status getStatus() {
-		return new Status(status);
+		return status;
 	}
 	
 	public void setStatus(Status status) {
@@ -138,7 +155,7 @@ class Player {
 	}
 	
 	public void ShowSkill() {
-		Skill.chooseSkill(skillstructure);
+		Skill.chooseSkill(skillstructure, sc);
 	}
 	
 	

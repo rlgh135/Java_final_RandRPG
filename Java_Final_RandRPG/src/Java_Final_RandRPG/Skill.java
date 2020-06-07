@@ -1,3 +1,5 @@
+package Java_Final_RandRPG;
+
 import java.util.*;
 
 public class Skill {
@@ -30,14 +32,12 @@ public class Skill {
 	}*/
 	
 	// 전투 시 스킬 사용 선택 시 불러오는 메소드 스킬 정보를 출력해주고 번호를 받아 useSkill로 넘겨준다
-	public static void chooseSkill(SkillStructure[] s) {
+	public static void chooseSkill(SkillStructure[] s, Scanner sc) {
 		int choose=-1;
 		int Skill_Num=-1;
 		int Skill_ChoiceTimes=0;
-		Scanner sc = Main.sc;
 		if(s[0].Skill_No==-1) {
-			System.out.println("습득한 스킬이 없습니다.");
-			sc.close();
+			Interface.hasNoSkills();
 			return;
 		}
 		for(int i=0; i<s.length;i++) {
@@ -46,7 +46,8 @@ public class Skill {
 			}
 			System.out.println(i+1+". "+s[i].SkillName);
 		}
-		System.out.println("9.사용취소");
+		System.out.println("0. Cancel");
+		System.out.println("Your Choice .. => ");
 		choose=sc.nextInt();
 		if(choose==9)
 			return;
@@ -116,7 +117,7 @@ public class Skill {
 	
 	// 랜덤 선택시 스킬 보여줌
 	public static void showSkill(int num_skill1, int num_skill2, int num_skill3) {
-		System.out.println("습득할 스킬을 고르세요");
+		System.out.println("\tChoose A Skill you want.");
 		System.out.println("-------------------------------");
 		
 		switch(num_skill1) {
@@ -163,7 +164,7 @@ public class Skill {
 			System.out.println("4. Run");
 			break;
 		}
-		System.out.println("9. 배우지 않는다");
+		System.out.println("0. Cancel");
 		System.out.println("-------------------------------");
 	}
 	
@@ -269,4 +270,3 @@ public class Skill {
 		Battle.Run(100);
 	}	
 }
-
