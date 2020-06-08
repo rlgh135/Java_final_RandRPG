@@ -6,7 +6,7 @@ class Player {
 	private Status status;
 	private ArrayList<Item> item_status;
 	private ArrayList<Set> set_status;
-	public static skillStructure[] skillstructure = new skillStructure[5];
+	public static SkillStructure[] skillstructure = new SkillStructure[5];
 	public boolean is_there_item = false;
 	public boolean is_there_set = false;
 	public static Scanner sc = new Scanner(System.in);
@@ -16,7 +16,7 @@ class Player {
 		status = new Status(30, 20, 1, 5, 3, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
-		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new skillStructure();
+		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
 	}
 	public Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
 		status = new Status(0, 0, 0, 0, 0, 0);
@@ -35,7 +35,7 @@ class Player {
 		status.pdp = _pdp;
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
-		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new skillStructure();
+		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
 	}
 	
 	public void AddItem(Item item) {
