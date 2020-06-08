@@ -19,7 +19,7 @@ public class Set {
 	}
 	public void Show() {
 		System.out.println(" -----------------------------------------------------------------------");
-		System.out.printf("\tSet : %-50s", name);
+		System.out.printf("|\tSet : %-50s", name);
 		System.out.println("\t|");
 		System.out.println("|\t\t\t\t\t\t\t\t\t|");
 		System.out.printf("|\t\t\tEFFECT");
@@ -32,7 +32,7 @@ public class Set {
 		System.out.println("\t\t\t\t\t\t|");
 		System.out.printf("|\t\tDp : %-3d", status.pdp);
 		System.out.println("\t\t\t\t\t\t|");
-		System.out.println(" -------------------------------------------------------");
+		System.out.println(" -----------------------------------------------------------------------");
 		System.out.println();
 	}
 	public Status getStatus() {

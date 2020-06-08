@@ -13,7 +13,7 @@ class Player {
 	//private int money;
 
 	public Player(){//초기 캐릭터 설정값
-		status = new Status(30, 20, 1, 5, 20, 4);
+		status = new Status(30, 20, 1, 5, 1000, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
 		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
@@ -154,8 +154,10 @@ class Player {
 		this.status = status;
 	}
 	
-	public void ShowSkill() {
-		Skill.chooseSkill(skillstructure, sc);
+	public boolean ShowSkill() {
+		int result = Skill.chooseSkill(skillstructure, sc);
+		if(result == -1 || result == 0) return false;
+		return true;
 	}
 	
 	

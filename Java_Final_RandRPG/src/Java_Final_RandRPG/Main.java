@@ -298,7 +298,7 @@ public class Main {
 			if (i.getNo()%5 == 0) I.add(i);
 		}
 		
-		battle.Progress(sc);
+		if(!battle.Progress(sc)) { return; } //Run
 		
 		battle.Result(I, sets, 100);
 	}

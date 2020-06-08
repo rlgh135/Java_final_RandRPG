@@ -32,13 +32,13 @@ public class Skill {
 	}*/
 	
 	// 전투 시 스킬 사용 선택 시 불러오는 메소드 스킬 정보를 출력해주고 번호를 받아 useSkill로 넘겨준다
-	public static void chooseSkill(SkillStructure[] s, Scanner sc) {
+	public static int chooseSkill(SkillStructure[] s, Scanner sc) {
 		int choose=-1;
 		int Skill_Num=-1;
 		int Skill_ChoiceTimes=0;
 		if(s[0].Skill_No==-1) {
 			Interface.hasNoSkills();
-			return;
+			return -1;
 		}
 		for(int i=0; i<s.length;i++) {
 			if(s[i].Skill_No==-1) {
@@ -49,11 +49,12 @@ public class Skill {
 		System.out.println("0. Cancel");
 		System.out.println("Your Choice .. => ");
 		choose=sc.nextInt();
-		if(choose==9)
-			return;
+		if(choose==0)
+			return 0;
 		Skill_Num=s[choose-1].Skill_No;
 		Skill_ChoiceTimes=s[choose-1].ChoiceTimes;
-		useSkill(Skill_Num, Skill_ChoiceTimes);	
+		useSkill(Skill_Num, Skill_ChoiceTimes);
+		return 1;
 	}
 	
 	// 전투시 스킬의 사용, chooseSkill에서 번호와 중첩 횟수를 받아서 스킬 사용 함수를 호출
@@ -249,12 +250,10 @@ public class Skill {
 			break;	
 		}
 	}
-	public static void Heal(int Skill_ChoiceTimes) {
+	public static void Heal(/*Player p,*/ int Skill_ChoiceTimes) {
 		// p.hp += 1/2*Skill_ChoiceTimes*p.hp;
-		/*
 		 
-		 player.hp += 1/2*Skill_ChoiceTimes*p.hp;
-		 */
+		// player.hp += 1/2*Skill_ChoiceTimes*p.hp;
 	}
 	public static void Smite(/*Player p,*/int Skill_ChoiceTimes) {
 		/*
