@@ -23,7 +23,7 @@ class Battle {
 				if (Attack()) return true;
 				break;
 			case '2':
-				Skill();
+				if(!Skill()) { continue; }
 				break;
 			case '3':
 				player.Show();
@@ -33,8 +33,8 @@ class Battle {
 				continue;
 			case '0':
 				if (!isboss) {
-					if(Run(25))return false;
-					else break;
+					if(Run(25))	return false; //Run 했을 때 도망치는데 성공해도 map으로 돌아가지 않아서 수정함.
+					break;
 				}
 				System.out.println("Wrong input.");
 				continue;
@@ -110,7 +110,9 @@ class Battle {
 		player.PlusExp(temp);
 	}
 	
-	public void Skill() {
-		player.ShowSkill();
+	public boolean Skill() {
+		if(!player.ShowSkill()) { return false; } //skill이 없거나 사용 취소하면 바로 배틀메뉴로 돌아가게
+		
+		return true;
 	}
 }
