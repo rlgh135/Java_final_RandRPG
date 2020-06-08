@@ -5,7 +5,7 @@ import java.util.*;
 public class Skill {
 	
 	// 스킬 습득 가능 레벨에 메인에서 불러오기 랜덤하게 배울 스킬을 생성해줌
-	public static void lev_skillList(skillStructure[] s) {
+	public static void lev_skillList(SkillStructure[] s) {
 		
 		int trigger= -1;
 		Scanner sc = Main.sc;
@@ -63,7 +63,7 @@ public class Skill {
 	}
 	
 	//lev_skillList로부터 호출, 스킬을 스킬 스트럭쳐에 기록함
-	public static void learnSkill(int trigger, skillStructure[] s, boolean isload) {
+	public static void learnSkill(int trigger, SkillStructure[] s, boolean isload) {
 		switch(trigger) {
 		// trigger를 받아서 트리거에 해당하는 번호 스킬내용을 구조체에 기록
 		case 1:
