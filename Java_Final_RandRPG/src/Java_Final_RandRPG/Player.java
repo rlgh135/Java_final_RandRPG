@@ -6,17 +6,17 @@ class Player {
 	private Status status;
 	private ArrayList<Item> item_status;
 	private ArrayList<Set> set_status;
-	public SkillStructure[] skillstructure = new SkillStructure[5];
+	public static skillStructure[] skillstructure = new skillStructure[5];
 	public boolean is_there_item = false;
 	public boolean is_there_set = false;
 	public static Scanner sc = new Scanner(System.in);
 	//private int money;
 
 	public Player(){//초기 캐릭터 설정값
-		status = new Status(30, 20, 1, 5, 1000, 4);
+		status = new Status(30, 20, 1, 5, 3, 4);
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
-		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
+		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new skillStructure();
 	}
 	public Player(int _maxHp, int _hp, int _maxMp, int _mp, int _level, int _maxExp, int _exp, int _ad, int _dp, int _pmaxHp, int _pmaxMp, int _pad, int _pdp){
 		status = new Status(0, 0, 0, 0, 0, 0);
@@ -35,7 +35,7 @@ class Player {
 		status.pdp = _pdp;
 		item_status = new ArrayList<Item>();
 		set_status = new ArrayList<Set>();
-		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new SkillStructure();
+		for(int i=0;i<skillstructure.length;i++) skillstructure[i]=new skillStructure();
 	}
 	
 	public void AddItem(Item item) {
@@ -54,7 +54,7 @@ class Player {
 	}
 	public HashSet<ArrayList<Integer>> getSkillsNo(){
 		HashSet<ArrayList<Integer>> skillsNo = new HashSet<ArrayList<Integer>>();
-		for(SkillStructure ss : skillstructure) {
+		for(skillStructure ss : skillstructure) {
 			ArrayList<Integer> arr = new ArrayList<Integer>();
 			arr.add(ss.Skill_No);
 			arr.add(ss.ChoiceTimes);
@@ -114,9 +114,12 @@ class Player {
 			status.level++;
 			Interface.lv_up(status.level);
 			if(status.level%3==0) {
+				
 				Skill.lev_skillList(skillstructure);
 			}
-			status.maxExp+=50;
+			//
+			status.maxExp+=5;
+			//
 			status.maxHp+=10;
 			status.maxMp+=10;
 			status.hp=status.maxHp+status.pmaxHp;
@@ -146,18 +149,14 @@ class Player {
 		
 	}
 	
+	
 	public Status getStatus() {
 		return status;
 	}
+
 	
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-	
-	public boolean ShowSkill() {
-		int result = Skill.chooseSkill(skillstructure, sc);
-		if(result == -1 || result == 0) return false;
-		return true;
 	}
 	
 	
@@ -184,5 +183,8 @@ class Player {
 		for(int i=0; i<times; i++)
 		Skill.learnSkill(no, skillstructure, true);
 	}
+	public void Heal() {
+		PlusHp(1/2*skillstructure[0].ChoiceTimes*20);
+	}
+	
 }
-
