@@ -6,7 +6,8 @@ class Battle {
 	private Player player;
 	private Monster monster;
 	private boolean isboss;
-	
+	Scanner sc = new Scanner(System.in);
+	private int skilltrigger=0;
 	public Battle(Player player, Monster monster) {
 		this.player = player;
 		this.monster = monster;
@@ -16,13 +17,18 @@ class Battle {
 	public boolean Progress(Scanner sc) {
 		monster.Show();
 		player.Show();
+		
 		while (true) {
+			if(skilltrigger==1) {
+				return true;
+			}
 			Interface.show_battle(isboss);
 			switch(sc.next().charAt(0)) {
 			case '1':
 				if (Attack()) return true;
 				break;
 			case '2':
+				if(!ShowSkill())
 				if(!Skill()) { continue; }
 				break;
 			case '3':
@@ -77,7 +83,8 @@ class Battle {
 	}
 	
 	public void Result(ArrayList<Item> items, ArrayList<Set> sets, int percent) {
-
+		
+		this.skilltrigger=0;
 		Interface.monster_die();
 		if (new Random().nextInt(100) < percent) {
 			Item it = items.get(new Random().nextInt(items.size()));
@@ -111,8 +118,73 @@ class Battle {
 	}
 	
 	public boolean Skill() {
-		if(!player.ShowSkill()) { return false; } //skill이 없거나 사용 취소하면 바로 배틀메뉴로 돌아가게
-		
+		if(!ShowSkill()) { return false; }//skill이 없거나 사용 취소하면 바로 배틀메뉴로 돌아가게
 		return true;
+	}
+	public int chooseSkill(skillStructure[] s, Scanner sc) {
+		int choose=-1;
+		int Skill_Num=-1;
+		int Skill_ChoiceTimes=0;
+		if(s[0].Skill_No==-1&&s[1].Skill_No==-1&&s[2].Skill_No==-1) {
+			Interface.hasNoSkills();
+			return -1;
+		}
+		for(int i=0; i<s.length;i++) {
+			if(s[i].Skill_No!=-1) {
+			System.out.println(i+1+". "+s[i].SkillName);
+			}
+		}
+		System.out.println("0. Cancel");
+		System.out.println("Your Choice .. => ");
+		choose=sc.nextInt();
+		if(choose==0)
+			return 0;
+		Skill_Num=s[choose-1].Skill_No;
+		Skill_ChoiceTimes=s[choose-1].ChoiceTimes;
+		useSkill(Skill_Num, Skill_ChoiceTimes);
+		return 1;
+	}
+	
+	public boolean ShowSkill() {
+		int result = chooseSkill(Player.skillstructure, sc);
+		if(result == -1 || result == 0) return false;
+		return true;
+	}
+	public boolean Multiattack(int Skill_ChoiceTimes) {
+		for(int i=0; i<Skill_ChoiceTimes; i++) {
+			Interface.show_attacked();
+			player.Attacked(monster.Damage());
+			
+		}
+		if (player.Attacked(monster.Damage())) {
+			return true;
+		}
+		player.Show();
+		return false;
+	
+	}
+	public boolean useSkill(int Skill_Num, int Skill_ChoiceTimes) {
+		
+		switch(Skill_Num) {
+		case 1:
+			System.out.println("Heal");
+			// 스킬 함수 호출
+			player.Heal();
+			break;
+		case 2:
+			
+			for(int i=0; i<player.skillstructure[1].ChoiceTimes; i++) {
+				System.out.println("Multiattack"+i+1+"hit!");
+				if (monster.Attacked(player.Damage())) {
+					this.skilltrigger=1;
+				}
+			}
+			break;
+		case 3:
+			System.out.println("Run");
+			Run(100);
+			break;	
+		}
+		return false;
 	}
 }
