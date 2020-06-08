@@ -151,7 +151,7 @@ public class Interface {
 		System.out.println("\n\n -------------------------");
 		System.out.println("|\t\t\t  |");
 		System.out.println("|\t\t\t  |");
-		System.out.print("| You Attack the Monster!!");
+		System.out.print("| You Attacked the Monster!!");
 		System.out.println("|");
 		System.out.println("|\t\t\t  |");
 		System.out.println("|\t\t\t  |");
@@ -162,7 +162,7 @@ public class Interface {
 		System.out.println("\n\n ---------------------------------------");
 		System.out.println("|\t\t\t\t\t|");
 		System.out.println("|\t\t\t\t\t|");
-		System.out.print("|  You're Attacked from the Monster!!");
+		System.out.print("|  You're Attacked by the Monster!!");
 		System.out.println("\t|");
 		System.out.println("|\t\t\t\t\t|");
 		System.out.println("|\t\t\t\t\t|");
@@ -186,7 +186,7 @@ public class Interface {
 			System.out.println(" ---------------------------------------");
 			System.out.println("|\t\t\t\t\t|");
 			System.out.println("|\t\t\t\t\t|");
-			System.out.print("|  Oops..you failed to get away.");
+			System.out.print("|  Oops..you failed to run away.");
 			System.out.println("\t|");
 			System.out.println("|\t\t\t\t\t|");
 			System.out.println("|\t\t\t\t\t|");

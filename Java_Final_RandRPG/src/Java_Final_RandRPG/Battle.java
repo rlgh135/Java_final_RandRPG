@@ -35,7 +35,6 @@ class Battle {
 				if (!isboss) {
 					if(Run(25))	return false; //Run 했을 때 도망치는데 성공해도 map으로 돌아가지 않아서 수정함.
 					break;
-					
 				}
 				System.out.println("Wrong input.");
 				continue;
@@ -71,7 +70,7 @@ class Battle {
 		Random rand = new Random();
 		if (rand.nextInt(100) < percent) {
 			Interface.show_run(true);
-			return true;
+	          return true;
 		}
 		Interface.show_run(false);
 		return false;

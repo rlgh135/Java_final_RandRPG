@@ -174,7 +174,7 @@ public class Skill {
 		switch(trigger) {
 		// trigger를 받아서 트리거에 해당하는 번호 스킬내용을 구조체에 기록
 		case 1:
-			if (!isload) System.out.println("Learn Heal");
+			if (!isload) System.out.println("You Have Learnt Heal!");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=1;
@@ -193,7 +193,7 @@ public class Skill {
 			break;
 			
 		case 2:
-			if (!isload) System.out.println("Learn Smite");
+			if (!isload) System.out.println("You Have Learnt Smite");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=2;
@@ -212,7 +212,7 @@ public class Skill {
 			break;
 			
 		case 3:
-			if (!isload) System.out.println("Learn Ignite");
+			if (!isload) System.out.println("You Have Learnt Ignite");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=3;
@@ -231,7 +231,7 @@ public class Skill {
 			break;
 			
 		case 4:
-			if (!isload) System.out.println("Learn Run");
+			if (!isload) System.out.println("You Have Learnt Run");
 			for(int i=0; i<s.length;i++) {
 				if(s[i].Skill_No==-1) {
 					s[i].Skill_No=4;
